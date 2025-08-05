@@ -3,10 +3,11 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'sinchoku-manager'
-primary_region = 'hkg'
+app = "sinchoku-manager"
+primary_region = "hkg"
 
 [build]
+  builder = "paketobuildpacks/builder:base"
 
 [[processes]]
   name = "worker"
