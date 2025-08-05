@@ -1,11 +1,9 @@
-# .github/workflows/fly.yml
-
 name: Fly Deploy
 
 on:
   push:
     branches:
-      - main # mainブランチにpushされた時だけ実行
+      - "main"
 
 jobs:
   deploy:
