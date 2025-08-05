@@ -14,6 +14,6 @@ primary_region = "hkg"
   command = "bundle exec clockwork lib/clock.rb"
 
 [[vm]]
-  memory = '1gb'
-  cpu_kind = 'shared'
+  memory = "1gb"
+  cpu_kind = "shared"
   cpus = 1
