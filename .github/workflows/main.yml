@@ -12,12 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # 以前の "uses: fly-apps/..." の行を削除し、以下の手動インストールに置き換えます
       - name: Setup flyctl
         run: |
           curl -L https://fly.io/install.sh | sh
-          export FLYCTL_INSTALL="$HOME/.fly"
-          export PATH="$FLYCTL_INSTALL/bin:$PATH"
+          echo "$HOME/.fly/bin" >> $GITHUB_PATH # ← ここが最後の修正点です
 
       - name: Deploy app
         run: flyctl deploy --remote-only
