@@ -1,0 +1,18 @@
+# fly.toml app configuration file generated for sinchoku-manager on 2025-08-05T13:53:52+09:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'sinchoku-manager'
+primary_region = 'hkg'
+
+[build]
+
+[[processes]]
+  name = "worker"
+  command = "bundle exec clockwork lib/clock.rb"
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
