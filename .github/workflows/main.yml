@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: superfly/fly-pr-actions/setup-flyctl@v2
+      - uses: fly-apps/setup-flyctl@v0 # ←【最重要】ここが新しい正しい場所です
       - run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
