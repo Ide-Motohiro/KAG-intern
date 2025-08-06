@@ -1,11 +1,13 @@
 # config/settings.yml
 
-discord:
-  # Discordで取得したWebhook URLをここに貼り付けます
-  webhook_url: "https://discord.com/api/webhooks/1402134851796078694/sXYD94uOx7OuyvTY7ED___6qwbGU5ii3Qi73D5-4svVPEjvT_ru_bzgc_zF0vOHAlZOF"
+# 送信したいチャンネルの情報のリスト
+targets:
+  - name: "soft_reminder_job" # 1つ目のジョブの名前（重複しないように）
+    webhook_url: "https://discord.com/api/webhooks/1402134851796078694/sXYD94uOx7OuyvTY7ED___6qwbGU5ii3Qi73D5-4svVPEjvT_ru_bzgc_zF0vOHAlZOF"
+    schedule_time: "10:25" # JST or UTC (fly.tomlの設定に依存)
+    message: "<@&1362630766692929566> 進捗どうですか？"
 
-schedule:
-  # 通知を送りたい時刻 (例: "18:00")
-  time: "10:10"
-  # 送りたいメッセージ
-  message: "<@&1362630766692929566> 進捗どうですか？"
+  - name: "hard_reminder_job" # 2つ目のジョブの名前
+    webhook_url: "https://discord.com/api/webhooks/1402459100842819584/QVBBWkf0CArCbmJrLkMZ3Yr48FI3_aGbhLumls37UXGhvK_Thrt5yNmnMEEOA9x1UNOa"
+    schedule_time: "10:25" # JST or UTC
+    message: "<@&1362630841636753530> 進捗どうですか？"

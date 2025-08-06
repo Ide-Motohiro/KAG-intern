@@ -1,29 +1,21 @@
 # lib/discord_notifier.rb
 
-require 'httparty' # HTTPリクエストを簡単にする
-require 'yaml'     # YAMLファイルを読み込む
+require 'httparty'
 require 'json'
 
 class DiscordNotifier
-  # 設定ファイルを読み込む
-  CONFIG = YAML.load_file('./config/settings.yml')
-  WEBHOOK_URL = CONFIG.dig('discord', 'webhook_url')
-
-  def self.send(message)
-    # Webhook URLが設定されていなければエラーにする
-    if WEBHOOK_URL.nil? || WEBHOOK_URL.empty?
-      puts "[ERROR] Webhook URLが設定されていません。config/settings.ymlを確認してください。"
+  def self.send(webhook_url, message) # 引数にwebhook_urlを追加
+    if webhook_url.nil? || webhook_url.empty?
+      puts "[ERROR] Webhook URLが設定されていません。"
       return
     end
 
-    # HTTPartyを使ってDiscordにPOSTリクエストを送信
     response = HTTParty.post(
-      WEBHOOK_URL,
+      webhook_url, # 引数で受け取ったURLを使う
       body: { content: message }.to_json,
       headers: { 'Content-Type' => 'application/json' }
     )
     
-    # 送信結果をコンソールに表示
     puts response.success? ? "メッセージを正常に送信しました。" : "メッセージの送信に失敗しました: #{response.body}"
   end
 end
