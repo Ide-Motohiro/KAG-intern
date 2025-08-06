@@ -6,6 +6,9 @@
 app = "sinchoku-manager"
 primary_region = "hkg"
 
+[env]
+  TZ = "Asia/Tokyo"
+
 [build]
   builder = "paketobuildpacks/builder:base"
 
